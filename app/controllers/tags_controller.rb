@@ -3,12 +3,12 @@ class TagsController < ApplicationController
 
   def index
     tags = Tag.all
-    render json: tags
+    render json: tags, each_serializer: TagOnlySerializer
   end
 
   def show
     tag = Tag.find(params[:id])
-    render json: tag
+    render json: tag, serializer: TagOnlySerializer
   end
 
   private
